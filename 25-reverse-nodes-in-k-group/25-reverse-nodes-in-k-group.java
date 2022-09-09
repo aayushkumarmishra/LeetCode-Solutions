@@ -23,11 +23,6 @@ class Solution {
                 
                 pre = curr;
                 curr = forw;
-                
-                /*if(forw != null)
-                {
-                    forw = forw.next;
-                }*/
             }
         }
     
