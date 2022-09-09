@@ -24,10 +24,10 @@ class Solution {
                 pre = curr;
                 curr = forw;
                 
-                if(forw != null)
+                /*if(forw != null)
                 {
                     forw = forw.next;
-                }
+                }*/
             }
         }
     
