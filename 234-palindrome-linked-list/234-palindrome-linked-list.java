@@ -8,31 +8,71 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-import java.util.ArrayList;
 class Solution {
-    public boolean isPalindrome(ListNode head) {
-        
+    
+    public ListNode reverse(ListNode head)
+    {
+        ListNode pre = null;
         ListNode curr = head;
-        ArrayList<Integer> list = new ArrayList<Integer>();
+        ListNode forw = null;
         
         while(curr != null)
         {
-            list.add(curr.val);
-            curr = curr.next;
+            forw = curr.next;
+            curr.next = pre;
+            
+            pre = curr;
+            curr = forw;
         }
+        return pre;
+    }
+    
+    public void print(ListNode head)
+    {
+        ListNode temp = head;
         
-        int i = 0;
-        int j = list.size() - 1;
-        
-        while(i < j)
+        while(temp != null)
         {
-            if(list.get(i) != list.get(j))
-            {
-                return false;
-            }
-            i++;
-            j--;
+            System.out.print(temp.val + " ");
+            temp = temp.next;
         }
+        System.out.println();
+    }
+    
+    public boolean isPalindrome(ListNode head) {
+       
+        // i use slow and fast pointer to find mid of ll.
+        
+        ListNode slow = head;
+        ListNode fast = head;
+        
+        while(fast.next != null && fast.next.next != null)
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        // now my slow comes on mid of ll.
+        
+        // here i call reverse function
+        // i reverse all the element after mid
+        
+        slow.next = reverse(slow.next);
+        
+        ListNode start = head;
+        ListNode mid = slow.next;
+        
+        while(mid != null)
+        {
+            if(start.val != mid.val) return false;
+            
+            start = start.next;
+            mid = mid.next;
+        }
+        print(head);
+        slow.next = reverse(slow.next);
+        print(head);
         return true;
+        
     }
 }
