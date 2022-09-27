@@ -30,7 +30,7 @@ class Solution {
         while(!queue.isEmpty())
         {
             int size = queue.size();
-            List<Integer> subList = new LinkedList<Integer> ();
+            List<Integer> temp = new LinkedList<>();
             
             for(int i = 0; i < size; i++)
             {
@@ -44,9 +44,9 @@ class Solution {
                     queue.add(queue.peek().right);
                 }
         
-                subList.add(queue.poll().val);
+                temp.add(queue.poll().val);
             }
-            ans.add(subList);
+            ans.add(temp);
         }
         
         return ans;
