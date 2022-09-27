@@ -25,7 +25,7 @@ class Solution {
             return ans;
         }
         
-        queue.offer(root);
+        queue.add(root);
         
         while(!queue.isEmpty())
         {
@@ -36,14 +36,14 @@ class Solution {
             {
                 if(queue.peek().left != null)
                 {
-                    queue.offer(queue.peek().left);
+                    queue.add(queue.peek().left);
                 }
                 
                 if(queue.peek().right != null)
                 {
-                    queue.offer(queue.peek().right);
+                    queue.add(queue.peek().right);
                 }
-                
+        
                 subList.add(queue.poll().val);
             }
             ans.add(subList);
