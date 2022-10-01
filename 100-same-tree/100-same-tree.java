@@ -17,9 +17,13 @@ import java.util.ArrayList;
 class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         
-        if(p == null || q == null)
+        if(p == null && q == null)
         {
-            return (p == q);
+            return true;
+        }
+        else if(p == null || q == null)
+        {
+            return false;
         }
         
            return ((p.val == q.val) &&
