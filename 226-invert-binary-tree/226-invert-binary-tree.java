@@ -16,7 +16,9 @@
 class Solution {
     public TreeNode invertTree(TreeNode root) {
         
-        if(root == null) return null;
+        // This is recrusive method.
+        
+        /*if(root == null) return null;
         
         TreeNode temp = root.left;
         root.left = root.right;
@@ -26,5 +28,30 @@ class Solution {
         invertTree(root.right);
         
         return root;
+        */
+        
+        // This Irtative Method.
+        if(root == null) return null;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        
+        q.offer(root);
+        
+        while(!q.isEmpty())
+        {
+            TreeNode node = q.poll();
+            
+            if(node != null)
+            {
+                q.offer(node.left);
+                q.offer(node.right);
+                
+                TreeNode temp = node.left;                
+                node.left = node.right;                
+                node.right = temp;
+            }
+            
+        }
+        return root;
+        
     }
 }
