@@ -18,7 +18,7 @@ class Solution {
         
         // recursion
         
-        if(root == null) return null;
+        /*if(root == null) return null;
         
         if(root.val == val) return root;
         else if(val < root.val)
@@ -27,5 +27,16 @@ class Solution {
             return searchBST(root.right, val);
         else
             return null;
+            */
+        
+        if(root == null) return null;
+        
+        while(root != null)
+        {
+            if(root.val == val) return root;
+            else if(val < root.val) root = root.left;
+            else root = root.right;
+        }
+        return null;
     }
 }
