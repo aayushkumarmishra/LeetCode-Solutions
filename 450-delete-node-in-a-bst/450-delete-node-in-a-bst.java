@@ -33,7 +33,7 @@ class Solution {
                 int max = findmax(root.left);
                 root.val = max;
                 root.left = deleteNode(root.left, max);
-                return root;
+                //return root;
             }
             else if(root.left != null)
             {
