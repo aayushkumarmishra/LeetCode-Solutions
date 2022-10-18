@@ -3,25 +3,16 @@ class Solution {
         
         HashMap<Integer, Integer> map = new HashMap<>();
         
-        int count = 0;
         
-        for(int i : nums)
-        {
-            map.put(i, map.getOrDefault(i,0)+1);
-        }
+        for(int i : nums) map.put(i, map.getOrDefault(i,0)+1);
+        
+        int result = 0;
         
         for(int a : map.keySet())
         {
-            if(k != 0)
-            {
-                int b = a + k;
-                if(map.containsKey(b)) count ++;
-            }
-            else
-            {
-                if(map.get(a) >= 2) count++;
-            }
+            if(k > 0 && map.containsKey(a + k) || k == 0 && map.get(a) > 1)
+                result++;
         }
-        return count;
+        return result;
     }
 }
